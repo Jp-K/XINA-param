@@ -5,7 +5,7 @@
 #include "../routing/routing.h"
 
 
-template<int data_width_p, int deph_p>
+template<int x_id_p, int y_id_p, int data_width_p, int deph_p>
 struct channel_in: sc_module{
     
     sc_in_clk clk_i;
@@ -13,8 +13,6 @@ struct channel_in: sc_module{
     sc_in<sc_bv<data_width_p>> data_i;
     sc_in<sc_bv<1>> val_i;
     sc_out<sc_bv<1>> ack_o;
-
-    sc_in<sc_uint<32>>  x_id_p, y_id_p;
 
     sc_out<sc_bv<1>> req_l_o, req_n_o, req_e_o, req_s_o, req_w_o;
     sc_in<sc_bv<4>> gnt_i;
@@ -34,7 +32,7 @@ struct channel_in: sc_module{
     flow_in<data_width_p> *flow_in0;
     buffering<data_width_p, deph_p> *buffering0;
     sc_switch<2> *sc_switch0;
-    routing<data_width_p> *routing0;
+    routing<x_id_p, y_id_p, data_width_p> *routing0;
 
     void adjust(){
         frame_w.write(data_out_w.read().get_bit(data_width_p-1));
@@ -58,7 +56,7 @@ struct channel_in: sc_module{
         flow_in0 = new flow_in<data_width_p>("flow_in");
         buffering0 = new buffering<data_width_p, deph_p>("fifo");
         sc_switch0 = new sc_switch<2>("cs1");
-        routing0 = new routing<data_width_p>("ic");
+        routing0 = new routing<x_id_p, y_id_p, data_width_p>("ic");
 
         flow_in0->clk_i(clk_i);
         flow_in0->rst_i(rst_i);
@@ -85,8 +83,6 @@ struct channel_in: sc_module{
         sc_switch0->data3_i(rd3_w);
         sc_switch0->data_o(rd_w);
 
-        routing0->x_id_p(x_id_p);
-        routing0->y_id_p(y_id_p);
         routing0->clk_i(clk_i);
         routing0->rst_i(rst_i);
         routing0->frame_i(frame_w);

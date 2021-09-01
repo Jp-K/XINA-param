@@ -1,15 +1,13 @@
 #include <systemc.h>
 #include "router.h"
 
-#define x_id 0
-#define y_id 1
+#define x_id_p 0
+#define y_id_p 1
 #define data_width_p 8
 SC_MODULE(router_tb){
 
     sc_clock clk_i;
     sc_signal<sc_bv<1>> rst_i;
-
-    sc_signal<sc_uint<32>> x_id_p, y_id_p;
 
     sc_signal<sc_bv<data_width_p>> l_in_data_i;
     sc_signal<sc_bv<1>> l_in_val_i;
@@ -42,7 +40,7 @@ SC_MODULE(router_tb){
     sc_signal<sc_bv<1>> w_out_val_o;
     sc_signal<sc_bv<1>> w_out_ack_i;
 
-    router<data_width_p> *router0;
+    router<x_id_p, y_id_p, data_width_p> *router0;
 
     void rst(){
         rst_i.write("1");
@@ -173,11 +171,6 @@ SC_MODULE(router_tb){
             }
         }
     }
-    
-    void posij(){
-        x_id_p.write(x_id);
-        y_id_p.write(y_id);
-    }
 
     SC_CTOR(router_tb){
         
@@ -188,15 +181,12 @@ SC_MODULE(router_tb){
         SC_THREAD(l_o);
         SC_THREAD(in);
         SC_THREAD(rst);
-        SC_THREAD(posij);
         sensitive << clk_i << rst_i;
 
-        router0 = new router<data_width_p>("router");
+        router0 = new router<x_id_p, y_id_p, data_width_p>("router");
 
         router0->clk_i(clk_i);  
-        router0->rst_i(rst_i);
-        router0->x_id_p(x_id_p);
-        router0->y_id_p(y_id_p);
+        router0->rst_i(rst_i);     
         router0->l_in_data_i(l_in_data_i);
         router0->l_in_val_i(l_in_val_i);
         router0->l_in_ack_o(l_in_ack_o);

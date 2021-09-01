@@ -3,13 +3,16 @@
 #include "../channel_out/channel_out.h"
 #include "../crossbar/crossbar.h"
 
-
 template<int data_width_p>
 struct router: sc_module{
 
+    int x_id_p;
+    int y_id_p;
+
     sc_in_clk clk_i;
     sc_in<sc_bv<1>> rst_i;
-    sc_in<sc_uint<32>> x_id_p, y_id_p;
+
+    //sc_in<sc_uint<32>> x_id_p, y_id_p;
 
     sc_in<sc_bv<data_width_p>> l_in_data_i;
     sc_in<sc_bv<1>> l_in_val_i;
@@ -66,15 +69,15 @@ struct router: sc_module{
 
     sc_signal<sc_bv<data_width_p>> l_data_w, n_data_w, e_data_w, s_data_w, w_data_w;
 
-    channel_in<data_width_p, 4> *lin0;
+    channel_in<x_id_p, y_id_p, data_width_p, 4> *lin0;
     channel_out<data_width_p> *lout0;
-    channel_in<data_width_p, 4> *nin0;
+    channel_in<x_id_p, y_id_p, data_width_p, 4> *nin0;
     channel_out<data_width_p> *nout0;
-    channel_in<data_width_p, 4> *ein0;
+    channel_in<x_id_p, y_id_p, data_width_p, 4> *ein0;
     channel_out<data_width_p> *eout0;
-    channel_in<data_width_p, 4> *sin0;
+    channel_in<x_id_p, y_id_p, data_width_p, 4> *sin0;
     channel_out<data_width_p> *sout0;
-    channel_in<data_width_p, 4> *win0;
+    channel_in<x_id_p, y_id_p, data_width_p, 4> *win0;
     channel_out<data_width_p> *wout0;
 
 
@@ -271,11 +274,11 @@ struct router: sc_module{
     SC_CTOR(router){
         SC_METHOD(connections);
         sensitive << clk_i << rst_i;
-        lin0 = new channel_in<data_width_p, 4>("lxin");
-        nin0 = new channel_in<data_width_p, 4>("nxin");
-        ein0 = new channel_in<data_width_p, 4>("exin");
-        sin0 = new channel_in<data_width_p, 4>("sxin");
-        win0 = new channel_in<data_width_p, 4>("wxin");
+        lin0 = new channel_in<x_id_p, y_id_p, data_width_p, 4>("lxin");
+        nin0 = new channel_in<x_id_p, y_id_p, data_width_p, 4>("nxin");
+        ein0 = new channel_in<x_id_p, y_id_p, data_width_p, 4>("exin");
+        sin0 = new channel_in<x_id_p, y_id_p, data_width_p, 4>("sxin");
+        win0 = new channel_in<x_id_p, y_id_p, data_width_p, 4>("wxin");
         lout0 = new channel_out<data_width_p>("lxout");
         nout0 = new channel_out<data_width_p>("nxout");
         eout0 = new channel_out<data_width_p>("exout");
@@ -283,8 +286,6 @@ struct router: sc_module{
         wout0 = new channel_out<data_width_p>("wxout");
         crossbar0 = new crossbar("xbar");
 
-        lin0->x_id_p(x_id_p);
-        lin0->y_id_p(y_id_p);
         lin0->clk_i(clk_i);
         lin0->rst_i(rst_i);
         lin0->data_i(l_in_data_i);
@@ -300,8 +301,6 @@ struct router: sc_module{
         lin0->rd_i(rd_w_l_i);
         lin0->data_o(l_data_w);
 
-        nin0->x_id_p(x_id_p);
-        nin0->y_id_p(y_id_p);
         nin0->clk_i(clk_i);
         nin0->rst_i(rst_i);
         nin0->data_i(n_in_data_i);
@@ -317,8 +316,6 @@ struct router: sc_module{
         nin0->rd_i(rd_w_n_i);
         nin0->data_o(n_data_w);
 
-        ein0->x_id_p(x_id_p);
-        ein0->y_id_p(y_id_p);
         ein0->clk_i(clk_i);
         ein0->rst_i(rst_i);
         ein0->data_i(e_in_data_i);
@@ -334,8 +331,6 @@ struct router: sc_module{
         ein0->rd_i(rd_w_e_i);
         ein0->data_o(e_data_w);
 
-        sin0->x_id_p(x_id_p);
-        sin0->y_id_p(y_id_p);
         sin0->clk_i(clk_i);
         sin0->rst_i(rst_i);
         sin0->data_i(s_in_data_i);
@@ -351,8 +346,6 @@ struct router: sc_module{
         sin0->rd_i(rd_w_s_i);
         sin0->data_o(s_data_w);
 
-        win0->x_id_p(x_id_p);
-        win0->y_id_p(y_id_p);
         win0->clk_i(clk_i);
         win0->rst_i(rst_i);
         win0->data_i(w_in_data_i);

@@ -4,12 +4,11 @@
 enum ic_fsm {
 	s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13
 };
-template<int width_p>
+template<int x_id_p, int y_id_p, int width_p>
 struct routing: sc_module{
 
     
     sc_in_clk clk_i;
-    sc_in<sc_uint<32>> x_id_p, y_id_p;
     sc_in<sc_bv<1>> rst_i;
     sc_in<sc_bv<1>> frame_i;
     sc_in<sc_bv<width_p-1>> data_i;
@@ -33,17 +32,16 @@ struct routing: sc_module{
                 if(frame_i.read()=="1" and rok_i.read()=="1"){
                     y_dst_v = data_i.read().range(width_p/2-1, 0).to_uint();
                     x_dst_v = data_i.read().range(width_p-2, width_p/2).to_uint();
-                    cout << x_dst_v << "|" << y_dst_v << endl;
-                    if(x_dst_v != x_id_p.read()){
-                        if(x_dst_v > x_id_p.read()){
+                    if(x_dst_v != x_id_p){
+                        if(x_dst_v > x_id_p){
                             state.write(s1);
                         }else {
                             state.write(s2);
                         }
                         
-                    }else if(y_dst_v != y_id_p.read()){
+                    }else if(y_dst_v != y_id_p){
 
-                        if(y_dst_v > y_id_p.read()){
+                        if(y_dst_v > y_id_p){
                             state.write(s3);
                         }else{
                             state.write(s4);
