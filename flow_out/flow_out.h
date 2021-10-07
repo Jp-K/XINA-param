@@ -18,6 +18,8 @@ struct flow_out: sc_module{
         if((rst_i.read() != "1") && (clk_i.posedge())){
             switch(state){
                 case ofcs0:
+                    val_o.write("0");
+                    rd_o.write("0");
                     if (ack_i.read()=="0" && rok_i.read()=="1"){
                         state.write(ofcs1);
                     } else {
@@ -25,6 +27,8 @@ struct flow_out: sc_module{
                     }
                     break;
                 case ofcs1:
+                    val_o.write("1");
+                    rd_o.write("0");
                     if(ack_i.read()=="1"){
                         state.write(ofcs2);
                     }else{
@@ -32,6 +36,8 @@ struct flow_out: sc_module{
                     }
                     break;
                 case ofcs2:
+                    val_o.write("0");
+                    rd_o.write("1");
                     if(ack_i.read()=="0" && rok_i.read()=="1"){
                         state.write(ofcs1);
                     }else {
@@ -39,11 +45,18 @@ struct flow_out: sc_module{
                     }
                     break;
                 default:
+                    val_o.write("0");
+                    rd_o.write("0");
                     state.write(ofcs0);
                     break;
             }
-            data_o.write(data_i.read());
+            
 
+        } else if(rst_i.read() == "1"){
+            state.write(ofcs0);
+        }
+        data_o.write(data_i.read());
+        /*
         if(state.read()==ofcs1){
             val_o.write("1");
         } else {
@@ -53,11 +66,7 @@ struct flow_out: sc_module{
             rd_o.write("1");
         } else {
             rd_o.write("0");
-        }
-            
-        } else if(rst_i.read() == "1"){
-            state.write(ofcs0);
-        }
+        }  */
     }
 
     SC_CTOR(flow_out){

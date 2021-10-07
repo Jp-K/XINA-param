@@ -52,6 +52,17 @@ struct flow_in: sc_module{
             }
         }
         data_o.write(data_i.read());
+        /*
+        if((state.read() == ifcs1) or (state.read() == ifcs2)){
+            ack_o.write("1");
+        }else{
+            ack_o.write("0");
+        }
+        if((state.read() == ifcs1)){
+            wr_o.write("1");
+        }else{
+            wr_o.write("0");
+        } */
     }
 
     SC_CTOR(flow_in){

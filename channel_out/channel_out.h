@@ -10,7 +10,7 @@ struct channel_out: sc_module{
     sc_in_clk clk_i;
     sc_in<sc_bv<1>> rst_i;
 
-    sc_out<sc_bv<8>> data_o;
+    sc_out<sc_bv<data_width_p>> data_o;
     sc_out<sc_bv<1>> val_o;
     sc_in<sc_bv<1>> ack_i;
 

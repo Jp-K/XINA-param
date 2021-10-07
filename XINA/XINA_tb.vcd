@@ -1,5 +1,5 @@
 $date
-     Aug 31, 2021       20:49:53
+     Sep 30, 2021       16:56:50
 $end
 
 $version
@@ -13,30 +13,30 @@ $end
 $scope module SystemC $end
 $var wire    1  aaaaa  clk       $end
 $var wire    1  aaaab  rst       $end
-$var wire    8  aaaac  l_in_data_i [7:0]  $end
-$var wire    1  aaaad  l_in_val_i       $end
-$var wire    1  aaaae  l_in_ack_o       $end
-$var wire    8  aaaaf  l_out_data_o [7:0]  $end
-$var wire    1  aaaag  l_out_val_o       $end
-$var wire    1  aaaah  l_out_ack_i       $end
-$var wire    8  aaaai  _in_data_i [7:0]  $end
-$var wire    1  aaaaj  _in_val_i       $end
-$var wire    1  aaaak  _in_ack_o       $end
-$var wire    8  aaaal  _out_data_o [7:0]  $end
-$var wire    1  aaaam  _out_val_o       $end
-$var wire    1  aaaan  _out_ack_i       $end
-$var wire    8  aaaao  in_data_i [7:0]  $end
-$var wire    1  aaaap  in_val_i       $end
-$var wire    1  aaaaq  in_ack_o       $end
-$var wire    8  aaaar  out_data_o [7:0]  $end
-$var wire    1  aaaas  out_val_o       $end
-$var wire    1  aaaat  out_ack_i       $end
-$var wire    8  aaaau  n_data_i [7:0]  $end
-$var wire    1  aaaav  n_val_i       $end
-$var wire    1  aaaaw  n_ack_o       $end
-$var wire    8  aaaax  ut_data_o [7:0]  $end
-$var wire    1  aaaay  ut_val_o       $end
-$var wire    1  aaaaz  ut_ack_i       $end
+$var wire    8  aaaac  l_in_data_i0 [7:0]  $end
+$var wire    1  aaaad  l_in_val_i0       $end
+$var wire    1  aaaae  l_in_ack_o0       $end
+$var wire    8  aaaaf  l_out_data_o0 [7:0]  $end
+$var wire    1  aaaag  l_out_val_o0       $end
+$var wire    1  aaaah  l_out_ack_i0       $end
+$var wire    8  aaaai  l_in_data_i1 [7:0]  $end
+$var wire    1  aaaaj  l_in_val_i1       $end
+$var wire    1  aaaak  l_in_ack_o1       $end
+$var wire    8  aaaal  l_out_data_o1 [7:0]  $end
+$var wire    1  aaaam  l_out_val_o1       $end
+$var wire    1  aaaan  l_out_ack_i1       $end
+$var wire    8  aaaao  l_in_data_i2 [7:0]  $end
+$var wire    1  aaaap  l_in_val_i2       $end
+$var wire    1  aaaaq  l_in_ack_o2       $end
+$var wire    8  aaaar  l_out_data_o2 [7:0]  $end
+$var wire    1  aaaas  l_out_val_o2       $end
+$var wire    1  aaaat  l_out_ack_i2       $end
+$var wire    8  aaaau  l_in_data_i3 [7:0]  $end
+$var wire    1  aaaav  l_in_val_i3       $end
+$var wire    1  aaaaw  l_in_ack_o3       $end
+$var wire    8  aaaax  l_out_data_o3 [7:0]  $end
+$var wire    1  aaaay  l_out_val_o3       $end
+$var wire    1  aaaaz  l_out_ack_i3       $end
 $upscope $end
 $enddefinitions  $end
 
@@ -114,7 +114,7 @@ b10000001 aaaac
 
 #6000
 1aaaaa
-b100 aaaac
+b101 aaaac
 
 #6500
 0aaaaa
@@ -149,7 +149,7 @@ b100 aaaac
 
 #11000
 1aaaaa
-b10000 aaaac
+b10101 aaaac
 
 #11500
 0aaaaa
@@ -184,7 +184,7 @@ b10000 aaaac
 
 #16000
 1aaaaa
-b10000000 aaaac
+b1000101 aaaac
 
 #16500
 0aaaaa
@@ -192,6 +192,7 @@ b10000000 aaaac
 #17000
 1aaaaa
 1aaaad
+b10000001 aaaal
 
 #17500
 0aaaaa
@@ -206,6 +207,7 @@ b10000000 aaaac
 #19000
 1aaaaa
 0aaaad
+1aaaam
 
 #19500
 0aaaaa
@@ -213,265 +215,347 @@ b10000000 aaaac
 #20000
 1aaaaa
 0aaaae
+1aaaan
 
 #20500
 0aaaaa
 
 #21000
 1aaaaa
-b0 aaaac
+b10000 aaaac
+0aaaam
 
 #21500
 0aaaaa
 
 #22000
 1aaaaa
+1aaaad
+0aaaan
 
 #22500
 0aaaaa
+b101 aaaal
 
 #23000
 1aaaaa
+1aaaae
+1aaaam
 
 #23500
 0aaaaa
 
 #24000
 1aaaaa
+0aaaad
+1aaaan
 
 #24500
 0aaaaa
 
 #25000
 1aaaaa
+0aaaae
+0aaaam
 
 #25500
 0aaaaa
 
 #26000
 1aaaaa
+b10000000 aaaac
+0aaaan
 
 #26500
 0aaaaa
 
 #27000
 1aaaaa
+1aaaad
+1aaaam
 
 #27500
 0aaaaa
 
 #28000
 1aaaaa
+1aaaae
+1aaaan
 
 #28500
 0aaaaa
 
 #29000
 1aaaaa
+0aaaad
+0aaaam
 
 #29500
 0aaaaa
+b10101 aaaal
 
 #30000
 1aaaaa
+0aaaae
+0aaaan
 
 #30500
 0aaaaa
 
 #31000
 1aaaaa
+b0 aaaac
+b10000001 aaaao
 
 #31500
 0aaaaa
 
 #32000
 1aaaaa
+1aaaam
+1aaaap
 
 #32500
 0aaaaa
 
 #33000
 1aaaaa
+1aaaan
+1aaaaq
 
 #33500
 0aaaaa
 
 #34000
 1aaaaa
+0aaaam
+0aaaap
 
 #34500
 0aaaaa
 
 #35000
 1aaaaa
+0aaaan
+0aaaaq
 
 #35500
 0aaaaa
 
 #36000
 1aaaaa
+b111 aaaao
 
 #36500
 0aaaaa
 
 #37000
 1aaaaa
+1aaaap
 
 #37500
 0aaaaa
+b1000101 aaaal
 
 #38000
 1aaaaa
+1aaaaq
 
 #38500
 0aaaaa
 
 #39000
 1aaaaa
+0aaaap
 
 #39500
 0aaaaa
 
 #40000
 1aaaaa
+1aaaam
+0aaaaq
 
 #40500
 0aaaaa
 
 #41000
 1aaaaa
+1aaaan
+b100101 aaaao
 
 #41500
 0aaaaa
 
 #42000
 1aaaaa
+0aaaam
+1aaaap
 
 #42500
 0aaaaa
 
 #43000
 1aaaaa
+0aaaan
+1aaaaq
 
 #43500
 0aaaaa
 
 #44000
 1aaaaa
+1aaaam
+0aaaap
 
 #44500
 0aaaaa
 
 #45000
 1aaaaa
+1aaaan
+0aaaaq
 
 #45500
 0aaaaa
+b10000 aaaal
 
 #46000
 1aaaaa
+0aaaam
+b1101 aaaao
 
 #46500
 0aaaaa
 
 #47000
 1aaaaa
+0aaaan
+1aaaap
 
 #47500
 0aaaaa
 
 #48000
 1aaaaa
+1aaaam
+1aaaaq
 
 #48500
 0aaaaa
 
 #49000
 1aaaaa
+1aaaan
+0aaaap
 
 #49500
 0aaaaa
 
 #50000
 1aaaaa
+0aaaam
+0aaaaq
 
 #50500
 0aaaaa
 
 #51000
 1aaaaa
+0aaaan
+b10000 aaaao
 
 #51500
 0aaaaa
 
 #52000
 1aaaaa
+1aaaap
 
 #52500
 0aaaaa
 
 #53000
 1aaaaa
+1aaaaq
 
 #53500
 0aaaaa
+b10000000 aaaal
 
 #54000
 1aaaaa
+0aaaap
 
 #54500
 0aaaaa
 
 #55000
 1aaaaa
+0aaaaq
 
 #55500
 0aaaaa
 
 #56000
 1aaaaa
+1aaaam
+b10000000 aaaao
 
 #56500
 0aaaaa
 
 #57000
 1aaaaa
+1aaaan
+1aaaap
 
 #57500
 0aaaaa
 
 #58000
 1aaaaa
+0aaaam
+1aaaaq
 
 #58500
 0aaaaa
 
 #59000
 1aaaaa
+0aaaan
+0aaaap
 
 #59500
 0aaaaa
 
 #60000
 1aaaaa
+b0 aaaal
+1aaaam
+0aaaaq
 
 #60500
 0aaaaa
 
 #61000
 1aaaaa
+1aaaan
+b0 aaaao
 
 #61500
 0aaaaa
 
 #62000
 1aaaaa
+0aaaam
 
 #62500
 0aaaaa
 
 #63000
 1aaaaa
+0aaaan
 
 #63500
 0aaaaa
@@ -496,6 +580,7 @@ b0 aaaac
 
 #67000
 1aaaaa
+b10000001 aaaal
 
 #67500
 0aaaaa
@@ -508,72 +593,86 @@ b0 aaaac
 
 #69000
 1aaaaa
+1aaaam
 
 #69500
 0aaaaa
 
 #70000
 1aaaaa
+1aaaan
 
 #70500
 0aaaaa
 
 #71000
 1aaaaa
+0aaaam
 
 #71500
 0aaaaa
 
 #72000
 1aaaaa
+0aaaan
 
 #72500
 0aaaaa
+b111 aaaal
 
 #73000
 1aaaaa
+1aaaam
 
 #73500
 0aaaaa
 
 #74000
 1aaaaa
+1aaaan
 
 #74500
 0aaaaa
 
 #75000
 1aaaaa
+0aaaam
 
 #75500
 0aaaaa
 
 #76000
 1aaaaa
+0aaaan
 
 #76500
 0aaaaa
 
 #77000
 1aaaaa
+1aaaam
 
 #77500
 0aaaaa
 
 #78000
 1aaaaa
+1aaaan
 
 #78500
 0aaaaa
 
 #79000
 1aaaaa
+0aaaam
 
 #79500
 0aaaaa
+b100101 aaaal
 
 #80000
 1aaaaa
+0aaaan
 
 #80500
 0aaaaa
@@ -586,24 +685,28 @@ b0 aaaac
 
 #82000
 1aaaaa
+1aaaam
 
 #82500
 0aaaaa
 
 #83000
 1aaaaa
+1aaaan
 
 #83500
 0aaaaa
 
 #84000
 1aaaaa
+0aaaam
 
 #84500
 0aaaaa
 
 #85000
 1aaaaa
+0aaaan
 
 #85500
 0aaaaa
@@ -619,6 +722,7 @@ b0 aaaac
 
 #87500
 0aaaaa
+b1101 aaaal
 
 #88000
 1aaaaa
@@ -634,61 +738,684 @@ b0 aaaac
 
 #90000
 1aaaaa
+1aaaam
 
 #90500
 0aaaaa
 
 #91000
 1aaaaa
+1aaaan
 
 #91500
 0aaaaa
 
 #92000
 1aaaaa
+0aaaam
 
 #92500
 0aaaaa
 
 #93000
 1aaaaa
+0aaaan
 
 #93500
 0aaaaa
 
 #94000
 1aaaaa
+1aaaam
 
 #94500
 0aaaaa
 
 #95000
 1aaaaa
+1aaaan
 
 #95500
 0aaaaa
+b10000 aaaal
 
 #96000
 1aaaaa
+0aaaam
 
 #96500
 0aaaaa
 
 #97000
 1aaaaa
+0aaaan
 
 #97500
 0aaaaa
 
 #98000
 1aaaaa
+1aaaam
 
 #98500
 0aaaaa
 
 #99000
 1aaaaa
+1aaaan
 
 #99500
+0aaaaa
+
+#100000
+1aaaaa
+0aaaam
+
+#100500
+0aaaaa
+
+#101000
+1aaaaa
+0aaaan
+
+#101500
+0aaaaa
+
+#102000
+1aaaaa
+
+#102500
+0aaaaa
+
+#103000
+1aaaaa
+
+#103500
+0aaaaa
+b10000000 aaaal
+
+#104000
+1aaaaa
+
+#104500
+0aaaaa
+
+#105000
+1aaaaa
+
+#105500
+0aaaaa
+
+#106000
+1aaaaa
+1aaaam
+
+#106500
+0aaaaa
+
+#107000
+1aaaaa
+1aaaan
+
+#107500
+0aaaaa
+
+#108000
+1aaaaa
+0aaaam
+
+#108500
+0aaaaa
+
+#109000
+1aaaaa
+0aaaan
+
+#109500
+0aaaaa
+
+#110000
+1aaaaa
+b0 aaaal
+1aaaam
+
+#110500
+0aaaaa
+
+#111000
+1aaaaa
+1aaaan
+
+#111500
+0aaaaa
+
+#112000
+1aaaaa
+0aaaam
+
+#112500
+0aaaaa
+
+#113000
+1aaaaa
+0aaaan
+
+#113500
+0aaaaa
+
+#114000
+1aaaaa
+
+#114500
+0aaaaa
+
+#115000
+1aaaaa
+
+#115500
+0aaaaa
+
+#116000
+1aaaaa
+
+#116500
+0aaaaa
+
+#117000
+1aaaaa
+
+#117500
+0aaaaa
+
+#118000
+1aaaaa
+
+#118500
+0aaaaa
+
+#119000
+1aaaaa
+
+#119500
+0aaaaa
+
+#120000
+1aaaaa
+
+#120500
+0aaaaa
+
+#121000
+1aaaaa
+
+#121500
+0aaaaa
+
+#122000
+1aaaaa
+
+#122500
+0aaaaa
+
+#123000
+1aaaaa
+
+#123500
+0aaaaa
+
+#124000
+1aaaaa
+
+#124500
+0aaaaa
+
+#125000
+1aaaaa
+
+#125500
+0aaaaa
+
+#126000
+1aaaaa
+
+#126500
+0aaaaa
+
+#127000
+1aaaaa
+
+#127500
+0aaaaa
+
+#128000
+1aaaaa
+
+#128500
+0aaaaa
+
+#129000
+1aaaaa
+
+#129500
+0aaaaa
+
+#130000
+1aaaaa
+
+#130500
+0aaaaa
+
+#131000
+1aaaaa
+
+#131500
+0aaaaa
+
+#132000
+1aaaaa
+
+#132500
+0aaaaa
+
+#133000
+1aaaaa
+
+#133500
+0aaaaa
+
+#134000
+1aaaaa
+
+#134500
+0aaaaa
+
+#135000
+1aaaaa
+
+#135500
+0aaaaa
+
+#136000
+1aaaaa
+
+#136500
+0aaaaa
+
+#137000
+1aaaaa
+
+#137500
+0aaaaa
+
+#138000
+1aaaaa
+
+#138500
+0aaaaa
+
+#139000
+1aaaaa
+
+#139500
+0aaaaa
+
+#140000
+1aaaaa
+
+#140500
+0aaaaa
+
+#141000
+1aaaaa
+
+#141500
+0aaaaa
+
+#142000
+1aaaaa
+
+#142500
+0aaaaa
+
+#143000
+1aaaaa
+
+#143500
+0aaaaa
+
+#144000
+1aaaaa
+
+#144500
+0aaaaa
+
+#145000
+1aaaaa
+
+#145500
+0aaaaa
+
+#146000
+1aaaaa
+
+#146500
+0aaaaa
+
+#147000
+1aaaaa
+
+#147500
+0aaaaa
+
+#148000
+1aaaaa
+
+#148500
+0aaaaa
+
+#149000
+1aaaaa
+
+#149500
+0aaaaa
+
+#150000
+1aaaaa
+
+#150500
+0aaaaa
+
+#151000
+1aaaaa
+
+#151500
+0aaaaa
+
+#152000
+1aaaaa
+
+#152500
+0aaaaa
+
+#153000
+1aaaaa
+
+#153500
+0aaaaa
+
+#154000
+1aaaaa
+
+#154500
+0aaaaa
+
+#155000
+1aaaaa
+
+#155500
+0aaaaa
+
+#156000
+1aaaaa
+
+#156500
+0aaaaa
+
+#157000
+1aaaaa
+
+#157500
+0aaaaa
+
+#158000
+1aaaaa
+
+#158500
+0aaaaa
+
+#159000
+1aaaaa
+
+#159500
+0aaaaa
+
+#160000
+1aaaaa
+
+#160500
+0aaaaa
+
+#161000
+1aaaaa
+
+#161500
+0aaaaa
+
+#162000
+1aaaaa
+
+#162500
+0aaaaa
+
+#163000
+1aaaaa
+
+#163500
+0aaaaa
+
+#164000
+1aaaaa
+
+#164500
+0aaaaa
+
+#165000
+1aaaaa
+
+#165500
+0aaaaa
+
+#166000
+1aaaaa
+
+#166500
+0aaaaa
+
+#167000
+1aaaaa
+
+#167500
+0aaaaa
+
+#168000
+1aaaaa
+
+#168500
+0aaaaa
+
+#169000
+1aaaaa
+
+#169500
+0aaaaa
+
+#170000
+1aaaaa
+
+#170500
+0aaaaa
+
+#171000
+1aaaaa
+
+#171500
+0aaaaa
+
+#172000
+1aaaaa
+
+#172500
+0aaaaa
+
+#173000
+1aaaaa
+
+#173500
+0aaaaa
+
+#174000
+1aaaaa
+
+#174500
+0aaaaa
+
+#175000
+1aaaaa
+
+#175500
+0aaaaa
+
+#176000
+1aaaaa
+
+#176500
+0aaaaa
+
+#177000
+1aaaaa
+
+#177500
+0aaaaa
+
+#178000
+1aaaaa
+
+#178500
+0aaaaa
+
+#179000
+1aaaaa
+
+#179500
+0aaaaa
+
+#180000
+1aaaaa
+
+#180500
+0aaaaa
+
+#181000
+1aaaaa
+
+#181500
+0aaaaa
+
+#182000
+1aaaaa
+
+#182500
+0aaaaa
+
+#183000
+1aaaaa
+
+#183500
+0aaaaa
+
+#184000
+1aaaaa
+
+#184500
+0aaaaa
+
+#185000
+1aaaaa
+
+#185500
+0aaaaa
+
+#186000
+1aaaaa
+
+#186500
+0aaaaa
+
+#187000
+1aaaaa
+
+#187500
+0aaaaa
+
+#188000
+1aaaaa
+
+#188500
+0aaaaa
+
+#189000
+1aaaaa
+
+#189500
+0aaaaa
+
+#190000
+1aaaaa
+
+#190500
+0aaaaa
+
+#191000
+1aaaaa
+
+#191500
+0aaaaa
+
+#192000
+1aaaaa
+
+#192500
+0aaaaa
+
+#193000
+1aaaaa
+
+#193500
+0aaaaa
+
+#194000
+1aaaaa
+
+#194500
+0aaaaa
+
+#195000
+1aaaaa
+
+#195500
+0aaaaa
+
+#196000
+1aaaaa
+
+#196500
+0aaaaa
+
+#197000
+1aaaaa
+
+#197500
+0aaaaa
+
+#198000
+1aaaaa
+
+#198500
+0aaaaa
+
+#199000
+1aaaaa
+
+#199500
 0aaaaa
 

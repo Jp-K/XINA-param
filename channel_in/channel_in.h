@@ -7,6 +7,14 @@
 
 template<int data_width_p, int deph_p>
 struct channel_in: sc_module{
+
+    int pos_x;
+    int pos_y;
+
+    void set_position(int x, int y){
+        this->pos_x = x;
+        this->pos_y = y;
+    }
     
     sc_in_clk clk_i;
     sc_in<sc_bv<1>> rst_i;
@@ -60,6 +68,8 @@ struct channel_in: sc_module{
         sc_switch0 = new sc_switch<2>("cs1");
         routing0 = new routing<data_width_p>("ic");
 
+        routing0->set_position(pos_x,pos_y);
+
         flow_in0->clk_i(clk_i);
         flow_in0->rst_i(rst_i);
         flow_in0->data_i(data_i);
@@ -85,8 +95,8 @@ struct channel_in: sc_module{
         sc_switch0->data3_i(rd3_w);
         sc_switch0->data_o(rd_w);
 
-        routing0->x_id_p(x_id_p);
-        routing0->y_id_p(y_id_p);
+        routing0->x_id_p0(x_id_p);
+        routing0->y_id_p0(y_id_p);
         routing0->clk_i(clk_i);
         routing0->rst_i(rst_i);
         routing0->frame_i(frame_w);

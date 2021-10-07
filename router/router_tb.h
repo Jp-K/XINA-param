@@ -52,11 +52,13 @@ SC_MODULE(router_tb){
     }
 
     void in(){
-        sc_bv<data_width_p> pack_n[4] = {"11111111", "00000100", "00010000", "10000000"};
-        sc_bv<data_width_p> pack_n2[4] = {"10000000", "00000100", "00010000", "10000000"};
+        x_id_p.write(x_id);
+        y_id_p.write(y_id);
+        sc_bv<data_width_p> pack_n[6] = {"11111111", "00000101", "00010101", "01000101", "00010000", "10000000"};
+        sc_bv<data_width_p> pack_n2[6] = {"10000001", "00000111", "00100101", "00001101", "00010000", "10000000"};
         l_in_val_i.write("0");
             wait(1, SC_NS);
-        for(int i=0; i<4; i++){
+        for(int i=0; i<6; i++){
             l_in_val_i.write("0");
             l_in_data_i.write(pack_n[i]);
             wait(1, SC_NS);
@@ -73,22 +75,23 @@ SC_MODULE(router_tb){
 
         l_in_data_i.write("00000000");
         l_in_val_i.write("0");
+        e_in_val_i.write("0");
             wait(1, SC_NS);
-        for(int i=0; i<4; i++){
-            l_in_val_i.write("0");
-            l_in_data_i.write(pack_n2[i]);
+        for(int i=0; i<6; i++){
+            e_in_val_i.write("0");
+            e_in_data_i.write(pack_n2[i]);
             wait(1, SC_NS);
-            l_in_val_i.write("1");
-            while(l_in_ack_o.read() != "1"){
+            e_in_val_i.write("1");
+            while(e_in_ack_o.read() != "1"){
                 wait(1, SC_NS);
             }
-            l_in_val_i.write("0");
-            while(l_in_ack_o.read() != "0"){
+            e_in_val_i.write("0");
+            while(e_in_ack_o.read() != "0"){
                 wait(1, SC_NS);
             }
         }
-        l_in_val_i.write("0");
-        l_in_data_i.write("00000000");
+        e_in_val_i.write("0");
+        e_in_data_i.write("00000000");
         wait(50, SC_NS);
         sc_stop();
     }

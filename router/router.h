@@ -7,6 +7,14 @@
 template<int data_width_p>
 struct router: sc_module{
 
+    int pos_x;
+    int pos_y;
+
+    void set_position(int x, int y){
+        this->pos_x = x;
+        this->pos_y = y;
+    }
+
     sc_in_clk clk_i;
     sc_in<sc_bv<1>> rst_i;
     sc_in<sc_uint<32>> x_id_p, y_id_p;
@@ -66,15 +74,15 @@ struct router: sc_module{
 
     sc_signal<sc_bv<data_width_p>> l_data_w, n_data_w, e_data_w, s_data_w, w_data_w;
 
-    channel_in<data_width_p, 4> *lin0;
+    channel_in<data_width_p, 6> *lin0;
     channel_out<data_width_p> *lout0;
-    channel_in<data_width_p, 4> *nin0;
+    channel_in<data_width_p, 6> *nin0;
     channel_out<data_width_p> *nout0;
-    channel_in<data_width_p, 4> *ein0;
+    channel_in<data_width_p, 6> *ein0;
     channel_out<data_width_p> *eout0;
-    channel_in<data_width_p, 4> *sin0;
+    channel_in<data_width_p, 6> *sin0;
     channel_out<data_width_p> *sout0;
-    channel_in<data_width_p, 4> *win0;
+    channel_in<data_width_p, 6> *win0;
     channel_out<data_width_p> *wout0;
 
 
@@ -271,17 +279,23 @@ struct router: sc_module{
     SC_CTOR(router){
         SC_METHOD(connections);
         sensitive << clk_i << rst_i;
-        lin0 = new channel_in<data_width_p, 4>("lxin");
-        nin0 = new channel_in<data_width_p, 4>("nxin");
-        ein0 = new channel_in<data_width_p, 4>("exin");
-        sin0 = new channel_in<data_width_p, 4>("sxin");
-        win0 = new channel_in<data_width_p, 4>("wxin");
+        lin0 = new channel_in<data_width_p, 6>("lxin");
+        nin0 = new channel_in<data_width_p, 6>("nxin");
+        ein0 = new channel_in<data_width_p, 6>("exin");
+        sin0 = new channel_in<data_width_p, 6>("sxin");
+        win0 = new channel_in<data_width_p, 6>("wxin");
         lout0 = new channel_out<data_width_p>("lxout");
         nout0 = new channel_out<data_width_p>("nxout");
         eout0 = new channel_out<data_width_p>("exout");
         sout0 = new channel_out<data_width_p>("sxout");
         wout0 = new channel_out<data_width_p>("wxout");
         crossbar0 = new crossbar("xbar");
+
+        lin0->set_position(pos_x,pos_y);
+        nin0->set_position(pos_x,pos_y);
+        ein0->set_position(pos_x,pos_y);
+        sin0->set_position(pos_x,pos_y);
+        win0->set_position(pos_x,pos_y);
 
         lin0->x_id_p(x_id_p);
         lin0->y_id_p(y_id_p);

@@ -1,11 +1,11 @@
-#include "systemc.h"
 #include "../router/router.h"
 
-
-template<int rows_c, int cols_c, int data_width_c>
-struct XINA : sc_module {
-
+#define rows_c 2
+#define cols_c 1
+template<int data_width_c>
+struct birouter : sc_module{
     sc_in_clk clk_i;
+
     sc_in<sc_bv<1>> rst_i;
 
     sc_in<sc_bv<data_width_c>> l_in_data_i[cols_c][rows_c];
@@ -29,13 +29,28 @@ struct XINA : sc_module {
     sc_signal<sc_bv<1>> y_out_val_w[cols_c][rows_c+1];
     sc_signal<sc_bv<1>> y_out_ack_w[cols_c][rows_c+1];
 
+    sc_out<sc_bv<data_width_c>> in_data_w;
+    sc_out<sc_bv<1>> in_val_w;
+    sc_out<sc_bv<1>> in_ack_w;
+
     sc_signal<sc_uint<32>> x_id_p[cols_c][rows_c], y_id_p[cols_c][rows_c];
 
     router<data_width_c> *u_router[cols_c][rows_c];
 
-    //sc_vector<router<0,0,data_width_c>> a;
-    
-    //sc_module *u_router[cols_c][rows_c];
+    void data(){
+        in_data_w.write(y_out_data_w[0][1]);
+        in_val_w.write(y_out_val_w[0][1]);
+        in_ack_w.write(y_out_ack_w[0][1]);
+    }
+
+    void posij(){
+        for(int i=0; i<cols_c; i++){
+            for(int j=0; j<rows_c; j++){
+                x_id_p[i][j].write(i);
+                y_id_p[i][j].write(j);
+            }
+        }
+    }
 
     void y0(){
         for(int i=0; i<cols_c; i++){
@@ -59,20 +74,11 @@ struct XINA : sc_module {
         }
     }
 
-    void posij(){
-        for(int i=0; i<cols_c; i++){
-            for(int j=0; j<rows_c; j++){
-                x_id_p[i][j].write(i);
-                y_id_p[i][j].write(j);
-            }
-        }
-    }
-
-    SC_CTOR(XINA)
-    {
+    SC_CTOR(birouter){
+        SC_METHOD(posij);
         SC_METHOD(y0);
         SC_METHOD(x0);
-        SC_METHOD(posij);
+        SC_METHOD(data);
         sensitive << clk_i << rst_i;
 
         for(int i=0; i<cols_c; i++){
@@ -121,5 +127,31 @@ struct XINA : sc_module {
                 u_router[i][j]->w_out_ack_i(x_out_ack_w[i][j]);
             }
         }
+
+                sc_trace_file *wf = sc_create_vcd_trace_file("birouter_tb");
+
+                sc_trace(wf, clk_i, "clk_i");
+                sc_trace(wf, rst_i, "rst_i");
+                sc_trace(wf, l_in_data_i[0][0], "l_in_data_i");
+                sc_trace(wf, l_in_val_i[0][0],  "l_in_val_i");
+                sc_trace(wf, l_in_ack_o[0][0],  "l_in_ack_o");
+                sc_trace(wf, l_out_data_o[0][0],"l_out_data_o");
+                sc_trace(wf, l_out_val_o[0][0], "l_out_val_o");
+                sc_trace(wf, l_out_ack_i[0][0], "l_out_ack_i");
+
+                sc_trace(wf, l_in_data_i[0][1], "l_in_data_i_1");
+                sc_trace(wf, l_in_val_i[0][1],  "l_in_val_i_1");
+                sc_trace(wf, l_in_ack_o[0][1],  "l_in_ack_o_1");
+                sc_trace(wf, l_out_data_o[0][1],"l_out_data_o_1");
+                sc_trace(wf, l_out_val_o[0][1], "l_out_val_o_1");
+                sc_trace(wf, l_out_ack_i[0][1], "l_out_ack_i_1");
+
+                sc_trace(wf, in_data_w ,"x_in_data_w1");
+                sc_trace(wf, in_val_w, "x_in_val_w1");
+                sc_trace(wf, in_ack_w, "x_in_ack_w1");
+
+
+
+        
     }
 };

@@ -14,7 +14,7 @@ struct buffering: sc_module{
     sc_out<sc_bv<WIDTH>> data_o;
     
     sc_signal<sc_bv<WIDTH>> fifo_r[DEPTH];
-    sc_signal<sc_uint<2>> rd_ptr_r;
+    sc_signal<sc_uint<32>> rd_ptr_r;
 
     void fifo_ring_logic(){
         if(rst_i.read()=="1"){
